@@ -1,9 +1,29 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { useCallback } from "react";
+import * as SplashScreen from "expo-splash-screen";
+
+import { useFonts } from "expo-font";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "GT-Planar": require("./assets/fonts/GT-Planar-Regular-Trial.otf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style="auto" />
       <TouchableOpacity style={styles.button}>
         <Text style={styles.clickMe}>Click me</Text>
@@ -27,5 +47,6 @@ const styles = StyleSheet.create({
   },
   clickMe: {
     fontSize: 16,
+    fontFamily: "GT-Planar",
   },
 });

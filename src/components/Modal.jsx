@@ -45,18 +45,14 @@ export default function Modal(props) {
           <Ionicons name="close" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <ScrollView
-        style={{
-          paddingBottom: 10000,
-        }}
-      >
+      <ScrollView>
         <View style={styles.shiftContainer}>
           <Text style={styles.shiftText}>Select shift for this day</Text>
           <View style={styles.shiftRow}>
             <TouchableOpacity style={styles.shiftButtonContainer}>
               <Text style={styles.fontFamily}>No Shift</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.shiftButtonContainer}>
+            <TouchableOpacity style={styles.shiftButtonContainerHighlight}>
               <Ionicons name="sunny" size={18} color="black" />
               <Text style={styles.fontFamily}>Day</Text>
             </TouchableOpacity>
@@ -147,7 +143,7 @@ export default function Modal(props) {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingVertical: 10,
+              paddingBottom: 10,
             }}
           >
             <Text
@@ -608,7 +604,7 @@ const styles = StyleSheet.create({
   },
   shiftContainer: {
     padding: 20,
-    paddingBottom: 9400,
+    paddingBottom: 125,
   },
   shiftText: {
     marginBottom: 10,
@@ -628,7 +624,18 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     borderWidth: 0.5,
     borderRadius: 5,
-    gap: 10,
+    gap: 5,
+  },
+  shiftButtonContainerHighlight: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: 40,
+    paddingHorizontal: 10,
+    borderColor: "grey",
+    borderWidth: 0.5,
+    borderRadius: 5,
+    gap: 5,
+    backgroundColor: "#F6DD96",
   },
   fontFamily: {
     fontFamily: "GT-Planar",
